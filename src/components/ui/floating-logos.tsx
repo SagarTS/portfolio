@@ -29,7 +29,7 @@ const techLogos: FloatingLogo[] = [
         color: "#3178C6",
         position: { x: 88, y: 15 },
         animation: { duration: 5, delay: 0.5, type: "drift" },
-        size: "md",
+        size: "lg",
     },
     {
         name: "Git",
@@ -206,6 +206,7 @@ export function FloatingLogos() {
                                 alt='JS'
                                 width={40}
                                 height={40}
+                                className='w-7 h-7 md:w-9 md:h-9'
                             />
                         )}
                         {logo.name === "TypeScript" && (
@@ -214,6 +215,7 @@ export function FloatingLogos() {
                                 alt='TS'
                                 width={30}
                                 height={30}
+                                className='w-6 h-6 md:w-8 md:h-8'
                             />
                         )}
                         {logo.name === "React" && (
@@ -222,6 +224,7 @@ export function FloatingLogos() {
                                 alt='React'
                                 width={45}
                                 height={45}
+                                className='w-8 h-8 md:w-10 md:h-10'
                             />
                         )}
                         {logo.name === "TailwindCSS" && (
@@ -262,6 +265,7 @@ export function FloatingLogos() {
                                 alt='Git'
                                 width={40}
                                 height={40}
+                                className='w-7 h-7 md:w-9 md:h-9'
                             />
                         )}
                     </div>
