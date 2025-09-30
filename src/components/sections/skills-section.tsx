@@ -108,14 +108,12 @@ export function SkillsSection() {
                         onClick={(e) => {
                             e.preventDefault();
                             e.stopPropagation();
-                            console.log('Terminal toggle clicked, current state:', isTerminalMode);
                             setButtonClicked(true);
                             setIsTerminalMode(!isTerminalMode);
                             setTimeout(() => setButtonClicked(false), 1000);
                         }}
                         onMouseDown={(e) => {
                             e.preventDefault();
-                            console.log('Terminal button mouse down event');
                         }}
                         className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-200 border-2 cursor-pointer relative z-10 ${buttonClicked ? "dark:bg-green-500/30 dark:text-green-300 dark:border-green-500/70 light:bg-green-600/30 light:text-green-700 light:border-green-600/70" : isTerminalMode
                             ? "dark:bg-green-500/20 dark:text-green-400 dark:border-green-500/50 dark:hover:bg-green-500/30 light:bg-green-600/20 light:text-green-700 light:border-green-600/50 light:hover:bg-green-600/30 shadow-lg"
