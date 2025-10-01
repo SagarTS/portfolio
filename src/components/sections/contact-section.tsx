@@ -394,8 +394,7 @@ export function ContactSection() {
                                                     : {}
                                             }
                                             transition={{
-                                                duration: 0.5,
-                                                delay: 0.5 + index * 0.1,
+                                                duration: 0.2,
                                             }}
                                             whileHover={{ scale: 1.05, y: -2 }}
                                             whileTap={{ scale: 0.95 }}
