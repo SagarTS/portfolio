@@ -1,12 +1,13 @@
 "use client";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Menu, X, Home, User, Code, Briefcase, Mail } from "lucide-react";
+import { Menu, X, Home, Code, Briefcase, Mail } from "lucide-react";
+
 import { GlassCard } from "@/components/ui/glass-card";
 
 const navItems = [
     { name: "Home", href: "#hero", icon: Home },
-    { name: "About", href: "#about", icon: User },
+    // { name: "About", href: "#about", icon: User },
     { name: "Skills", href: "#skills", icon: Code },
     { name: "Projects", href: "#projects", icon: Briefcase },
     { name: "Experience", href: "#experience", icon: Briefcase },
@@ -17,8 +18,6 @@ export function Navigation() {
     const [isOpen, setIsOpen] = useState(false);
     const [activeSection, setActiveSection] = useState("hero");
     const [isVisible, setIsVisible] = useState(false);
-    const { scrollY } = useScroll();
-    const opacity = useTransform(scrollY, [0, 100], [0, 1]);
 
     useEffect(() => {
         const handleScroll = () => {

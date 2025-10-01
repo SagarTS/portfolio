@@ -1,15 +1,16 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
-import { useState, useRef } from "react";
 import {
-    Building2,
-    Calendar,
     MapPin,
+    Calendar,
     Download,
     FileText,
+    Building2,
     Briefcase,
 } from "lucide-react";
+import { useState, useRef } from "react";
+import { motion, useInView } from "framer-motion";
+
 import { GlassCard } from "@/components/ui/glass-card";
 
 const experiences = [
@@ -99,7 +100,6 @@ const education = [
 
 export function ExperienceSection() {
     const [isResumeMode, setIsResumeMode] = useState(false);
-    const [buttonClicked, setButtonClicked] = useState(false);
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
@@ -144,9 +144,7 @@ export function ExperienceSection() {
                         onClick={(e) => {
                             e.preventDefault();
                             e.stopPropagation();
-                            setButtonClicked(true);
                             setIsResumeMode(!isResumeMode);
-                            setTimeout(() => setButtonClicked(false), 1000);
                         }}
                         onMouseDown={(e) => {
                             e.preventDefault();

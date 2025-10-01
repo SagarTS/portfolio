@@ -1,17 +1,17 @@
-"use client"
+"use client";
 
-import { cn } from "@/lib/utils"
-import { motion } from "framer-motion"
-import { ReactNode } from "react"
+import { ReactNode } from "react";
+import { motion } from "framer-motion";
 
+import { cn } from "@/lib/utils";
 interface GlassCardProps {
-    children: ReactNode
-    className?: string
-    hover?: boolean
-    delay?: number
+    children: ReactNode;
+    className?: string;
+    hover?: boolean;
+    delay?: number;
 }
 
-export function GlassCard({ children, className, hover = true, delay = 0 }: GlassCardProps) {
+export function GlassCard({ children, className, delay = 0 }: GlassCardProps) {
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -29,12 +29,11 @@ export function GlassCard({ children, className, hover = true, delay = 0 }: Glas
                 "light:bg-white/70 light:shadow-lg light:shadow-gray-300/40",
                 "light:before:absolute light:before:inset-0 light:before:rounded-2xl light:before:bg-gradient-to-br light:before:from-white/40 light:before:to-transparent light:before:opacity-0 light:before:transition-opacity light:before:duration-200",
                 "light:hover:before:opacity-100",
-                // Add these to force proper GPU compositing and fix the blur rendering after opacity animation
                 "backface-hidden [transform:translateZ(0)] [will-change:opacity,transform]",
                 className
             )}
         >
             {children}
         </motion.div>
-    )
+    );
 }

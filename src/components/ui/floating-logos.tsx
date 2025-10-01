@@ -94,7 +94,7 @@ export function FloatingLogos() {
 
     if (!mounted) return null;
 
-    // Filter logos for mobile (show fewer logos)
+    // Filter logos for mobile
     const displayLogos = isMobile ? techLogos.slice(0, 4) : techLogos;
 
     return (

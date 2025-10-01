@@ -3,6 +3,7 @@
 import { useRef, useMemo } from "react";
 import { motion, useInView } from "framer-motion";
 import { Code, Rocket, Users } from "lucide-react";
+
 import { GlassCard } from "@/components/ui/glass-card";
 
 const timelineData = [
@@ -184,7 +185,7 @@ export function AboutSection() {
                             label: "Years Experience",
                         },
                         // { number: "10+", label: "Projects Completed" },
-                        { number: "100%", label: "Client Satisfaction" },
+                        { number: "95%+", label: "Client Satisfaction" },
                         { number: "24/7", label: "Learning Mode" },
                     ].map((stat, index) => (
                         <motion.div

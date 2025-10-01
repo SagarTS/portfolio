@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
 import { GlassCard } from "@/components/ui/glass-card";
-import { ParticleBackground } from "@/components/ui/particle-background";
+import { ArrowDown, Github, Linkedin, Mail } from "lucide-react";
+
 import { FloatingLogos } from "@/components/ui/floating-logos";
+import { ParticleBackground } from "@/components/ui/particle-background";
 
 export function HeroSection() {
     const scrollToNext = () => {
@@ -80,15 +81,14 @@ export function HeroSection() {
                 >
                     <GlassCard className='max-w-2xl mx-auto p-6 md:p-8'>
                         <p className='text-lg md:text-xl dark:text-white/90 light:text-gray-800 leading-relaxed'>
-                            Front-end engineer specializing in React, Next.js &
-                            TypeScript — I optimize UX and page speed so users
-                            stick around.
+                            I’m a front-end engineer who loves turning ideas
+                            into smooth, responsive interfaces. My main tools
+                            are{" "}
                             <span className='dark:text-transparent dark:bg-gradient-to-r dark:from-pink-400 dark:to-purple-400 dark:bg-clip-text light:text-transparent light:bg-gradient-to-r light:from-pink-600 light:to-purple-600 light:bg-clip-text font-semibold'>
-                                {" "}
-                                React, Next.js & TypeScript{" "}
+                                React, Next.js & TypeScript
                             </span>
-                            — I optimize UX and page speed so users stick
-                            around.
+                            , and I focus on making apps fast, intuitive, and
+                            enjoyable to use.
                         </p>
                     </GlassCard>
                 </motion.div>

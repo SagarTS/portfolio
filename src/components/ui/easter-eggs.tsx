@@ -1,10 +1,9 @@
-"use client"
+"use client";
 
-import { useEffect } from "react"
+import { useEffect } from "react";
 
 export function EasterEggs() {
     useEffect(() => {
-        // Console Easter Egg
         const consoleArt = `
     ╔══════════════════════════════════════╗
     ║                                      ║
@@ -21,35 +20,42 @@ export function EasterEggs() {
     ║    Feel free to reach out! 📧        ║
     ║                                      ║
     ╚══════════════════════════════════════╝
-    `
+    `;
 
-        console.log(consoleArt)
+        console.log(consoleArt);
 
         // Konami Code Easter Egg
-        let konamiCode: string[] = []
+        let konamiCode: string[] = [];
         const konamiSequence = [
-            "ArrowUp", "ArrowUp", "ArrowDown", "ArrowDown",
-            "ArrowLeft", "ArrowRight", "ArrowLeft", "ArrowRight",
-            "KeyB", "KeyA"
-        ]
+            "ArrowUp",
+            "ArrowUp",
+            "ArrowDown",
+            "ArrowDown",
+            "ArrowLeft",
+            "ArrowRight",
+            "ArrowLeft",
+            "ArrowRight",
+            "KeyB",
+            "KeyA",
+        ];
 
         const handleKeyDown = (e: KeyboardEvent) => {
-            konamiCode.push(e.code)
+            konamiCode.push(e.code);
 
             if (konamiCode.length > konamiSequence.length) {
-                konamiCode.shift()
+                konamiCode.shift();
             }
 
             if (konamiCode.join(",") === konamiSequence.join(",")) {
                 // Trigger special animation or effect
-                document.body.style.animation = "rainbow 2s infinite"
+                document.body.style.animation = "rainbow 2s infinite";
                 setTimeout(() => {
-                    document.body.style.animation = ""
-                }, 5000)
+                    document.body.style.animation = "";
+                }, 5000);
 
-                // Show special message
-                const message = document.createElement("div")
-                message.innerHTML = "🎉 Konami Code activated! You found the secret! 🎉"
+                const message = document.createElement("div");
+                message.innerHTML =
+                    "🎉 Konami Code activated! You found the secret! 🎉";
                 message.style.cssText = `
           position: fixed;
           top: 50%;
@@ -65,19 +71,18 @@ export function EasterEggs() {
           font-weight: bold;
           z-index: 10000;
           box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-        `
-                document.body.appendChild(message)
+        `;
+                document.body.appendChild(message);
 
                 setTimeout(() => {
-                    document.body.removeChild(message)
-                }, 3000)
+                    document.body.removeChild(message);
+                }, 3000);
 
-                konamiCode = []
+                konamiCode = [];
             }
-        }
+        };
 
-        // Add CSS for animations
-        const style = document.createElement("style")
+        const style = document.createElement("style");
         style.textContent = `
       @keyframes rainbow {
         0% { filter: hue-rotate(0deg); }
@@ -88,16 +93,16 @@ export function EasterEggs() {
         50% { background-position: 100% 50%; }
         100% { background-position: 0% 50%; }
       }
-    `
-        document.head.appendChild(style)
+    `;
+        document.head.appendChild(style);
 
-        window.addEventListener("keydown", handleKeyDown)
+        window.addEventListener("keydown", handleKeyDown);
 
         return () => {
-            window.removeEventListener("keydown", handleKeyDown)
-            document.head.removeChild(style)
-        }
-    }, [])
+            window.removeEventListener("keydown", handleKeyDown);
+            document.head.removeChild(style);
+        };
+    }, []);
 
-    return null
+    return null;
 }

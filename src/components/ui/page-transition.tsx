@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
-import { motion, AnimatePresence } from "framer-motion"
-import { ReactNode } from "react"
+import { ReactNode } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 interface PageTransitionProps {
-    children: ReactNode
+    children: ReactNode;
 }
 
 export function PageTransition({ children }: PageTransitionProps) {
     return (
-        <AnimatePresence mode="wait">
+        <AnimatePresence mode='wait'>
             <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -19,5 +19,5 @@ export function PageTransition({ children }: PageTransitionProps) {
                 {children}
             </motion.div>
         </AnimatePresence>
-    )
+    );
 }
