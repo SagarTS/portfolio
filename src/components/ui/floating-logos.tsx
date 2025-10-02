@@ -87,9 +87,19 @@ export function FloatingLogos() {
         };
 
         checkMobile();
-        window.addEventListener("resize", checkMobile);
 
-        return () => window.removeEventListener("resize", checkMobile);
+        let timeoutId: NodeJS.Timeout;
+        const debouncedResize = () => {
+            clearTimeout(timeoutId);
+            timeoutId = setTimeout(checkMobile, 100);
+        };
+
+        window.addEventListener("resize", debouncedResize);
+
+        return () => {
+            window.removeEventListener("resize", debouncedResize);
+            clearTimeout(timeoutId);
+        };
     }, []);
 
     if (!mounted) return null;
@@ -207,6 +217,8 @@ export function FloatingLogos() {
                                 width={40}
                                 height={40}
                                 className='w-7 h-7 md:w-9 md:h-9'
+                                loading='lazy'
+                                sizes='(max-width: 768px) 28px, 36px'
                             />
                         )}
                         {logo.name === "TypeScript" && (
@@ -216,6 +228,8 @@ export function FloatingLogos() {
                                 width={30}
                                 height={30}
                                 className='w-6 h-6 md:w-8 md:h-8'
+                                loading='lazy'
+                                sizes='(max-width: 768px) 24px, 32px'
                             />
                         )}
                         {logo.name === "React" && (
@@ -225,6 +239,8 @@ export function FloatingLogos() {
                                 width={45}
                                 height={45}
                                 className='w-8 h-8 md:w-10 md:h-10'
+                                loading='lazy'
+                                sizes='(max-width: 768px) 32px, 40px'
                             />
                         )}
                         {logo.name === "TailwindCSS" && (
@@ -233,6 +249,8 @@ export function FloatingLogos() {
                                 alt='Tailwind'
                                 width={35}
                                 height={35}
+                                loading='lazy'
+                                sizes='35px'
                             />
                         )}
                         {logo.name === "Next.js" && (
@@ -241,6 +259,8 @@ export function FloatingLogos() {
                                 alt='Next'
                                 width={30}
                                 height={30}
+                                loading='lazy'
+                                sizes='30px'
                             />
                         )}
                         {logo.name === "Node.js" && (
@@ -249,6 +269,8 @@ export function FloatingLogos() {
                                 alt='Node'
                                 width={30}
                                 height={30}
+                                loading='lazy'
+                                sizes='30px'
                             />
                         )}
                         {logo.name === "Ionic" && (
@@ -257,6 +279,8 @@ export function FloatingLogos() {
                                 alt='Ionic'
                                 width={30}
                                 height={30}
+                                loading='lazy'
+                                sizes='30px'
                             />
                         )}
                         {logo.name === "Git" && (
@@ -266,6 +290,8 @@ export function FloatingLogos() {
                                 width={40}
                                 height={40}
                                 className='w-7 h-7 md:w-9 md:h-9'
+                                loading='lazy'
+                                sizes='(max-width: 768px) 28px, 36px'
                             />
                         )}
                     </div>

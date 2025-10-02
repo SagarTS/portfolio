@@ -41,12 +41,14 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         if (!mounted) return;
 
         const root = document.documentElement;
-        if (theme === "dark") {
-            root.classList.add("dark");
+
+        // Only update classes if they don't match the current theme
+        if (theme === "dark" && !root.classList.contains("dark")) {
             root.classList.remove("light");
-        } else {
-            root.classList.add("light");
+            root.classList.add("dark");
+        } else if (theme === "light" && !root.classList.contains("light")) {
             root.classList.remove("dark");
+            root.classList.add("light");
         }
 
         localStorage.setItem("theme", theme);

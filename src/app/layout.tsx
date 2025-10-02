@@ -6,6 +6,8 @@ import { ThemeProvider } from "@/contexts/theme-context";
 const inter = Inter({
     subsets: ["latin"],
     variable: "--font-inter",
+    display: "swap",
+    preload: true,
 });
 
 export const metadata: Metadata = {
@@ -26,6 +28,10 @@ export const metadata: Metadata = {
             "Senior Frontend Developer with 5+ years of experience crafting immersive digital experiences.",
         type: "website",
     },
+    robots: {
+        index: true,
+        follow: true,
+    },
 };
 
 export default function RootLayout({
@@ -36,22 +42,14 @@ export default function RootLayout({
     return (
         <html lang='en' className='scroll-smooth dark'>
             <head>
-                {/* This script runs BEFORE React hydration */}
-                <script
-                    dangerouslySetInnerHTML={{
-                        __html: `
-                          (function() {
-                            try {
-                              var theme = localStorage.getItem('theme');
-                              if (!theme) {
-                                theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-                              }
-                              document.documentElement.classList.add(theme);
-                            } catch (_) {}
-                          })();
-                        `,
-                    }}
+                <link rel='preconnect' href='https://fonts.googleapis.com' />
+                <link
+                    rel='preconnect'
+                    href='https://fonts.gstatic.com'
+                    crossOrigin='anonymous'
                 />
+                <link rel='dns-prefetch' href='//fonts.googleapis.com' />
+                <link rel='dns-prefetch' href='//fonts.gstatic.com' />
             </head>
             <body className={`${inter.variable} font-sans antialiased`}>
                 <ThemeProvider>{children}</ThemeProvider>

@@ -146,6 +146,11 @@ export function ProjectsSection() {
                                                 width={600}
                                                 height={400}
                                                 className='w-full h-full object-cover'
+                                                priority={index < 2}
+                                                loading={
+                                                    index < 2 ? "eager" : "lazy"
+                                                }
+                                                sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                                             />
                                             <div className='absolute inset-0 bg-black/20' />
                                             {/* <div className="absolute inset-0 flex items-center justify-center">
@@ -292,6 +297,8 @@ export function ProjectsSection() {
                                                 width={600}
                                                 height={400}
                                                 className='w-full h-full object-cover'
+                                                loading='lazy'
+                                                sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
                                             />
                                             <div className='absolute inset-0 bg-black/30 flex items-center justify-center'>
                                                 {/* <Play className="w-8 h-8 text-white/80" /> */}
@@ -390,6 +397,8 @@ export function ProjectsSection() {
                                     width={600}
                                     height={400}
                                     className='w-full h-full object-cover'
+                                    priority
+                                    sizes='(max-width: 768px) 100vw, 800px'
                                 />
                             </div>
 

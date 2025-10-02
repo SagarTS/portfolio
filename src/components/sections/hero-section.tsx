@@ -33,10 +33,11 @@ export function HeroSection() {
                         ],
                     }}
                     transition={{
-                        duration: 8,
+                        duration: 12,
                         repeat: Infinity,
                         ease: "linear",
                     }}
+                    style={{ willChange: "background" }}
                 />
             </div>
 
