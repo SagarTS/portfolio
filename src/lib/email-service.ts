@@ -1,5 +1,5 @@
 import emailjs from "@emailjs/browser";
-import { emailjsConfig, isEmailConfigured } from "./emailjs-config";
+import { emailjsConfig } from "./emailjs-config";
 
 export interface ContactFormData {
     name: string;
@@ -12,16 +12,6 @@ export const sendContactEmail = async (
     formData: ContactFormData
 ): Promise<{ success: boolean; message: string }> => {
     try {
-        // Check if EmailJS is properly configured
-        if (!isEmailConfigured()) {
-            console.warn("EmailJS not configured. Using fallback method.");
-            return {
-                success: false,
-                message:
-                    "Email service not configured. Please contact me directly at sagartshrestha@gmail.com",
-            };
-        }
-
         // Initialize EmailJS
         emailjs.init(emailjsConfig.publicKey);
 

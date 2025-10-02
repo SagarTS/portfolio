@@ -267,8 +267,8 @@ export function ContactSection() {
                                             animate={{ opacity: 1, y: 0 }}
                                             className={`p-4 rounded-lg flex items-center gap-3 ${
                                                 submitStatus.type === "success"
-                                                    ? "bg-green-500/20 border border-green-500/30 text-green-400"
-                                                    : "bg-red-500/20 border border-red-500/30 text-red-400"
+                                                    ? "bg-green-500/20 border border-green-500/30 text-green-400 light:bg-green-100 light:border light:border-green-300 light:text-green-700"
+                                                    : "bg-red-500/20 border border-red-500/30 text-red-400 light:bg-red-100 light:border light:border-red-300 light:text-red-700"
                                             }`}
                                         >
                                             {submitStatus.type === "success" ? (
