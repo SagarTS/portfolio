@@ -44,6 +44,18 @@ const LazyExperienceSection = dynamic(
     }
 );
 
+const LazyArticlesSection = dynamic(
+    () =>
+        import("@/components/sections/articles-section").then((mod) => ({
+            default: mod.ArticlesSection,
+        })),
+    {
+        loading: () => (
+            <div className='h-96 animate-pulse bg-gradient-to-r from-gray-200 to-gray-300 dark:from-gray-700 dark:to-gray-800 rounded-lg' />
+        ),
+    }
+);
+
 const LazyContactSection = dynamic(
     () =>
         import("@/components/sections/contact-section").then((mod) => ({
@@ -72,6 +84,7 @@ export default function Home() {
             {/* <AboutSection /> */}
             <LazySkillsSection />
             <LazyProjectsSection />
+            <LazyArticlesSection />
             <LazyExperienceSection />
             <LazyContactSection />
         </main>

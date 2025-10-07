@@ -149,11 +149,10 @@ export function ExperienceSection() {
                         onMouseDown={(e) => {
                             e.preventDefault();
                         }}
-                        className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-200 border-2 cursor-pointer relative z-10 ${
-                            isResumeMode
+                        className={`inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-200 border-2 cursor-pointer relative z-10 ${isResumeMode
                                 ? "bg-blue-500/20 text-blue-400 border-blue-500/50 hover:bg-blue-500/30 shadow-lg"
                                 : "dark:bg-white/10 dark:text-white dark:border-white/30 dark:hover:bg-white/20 light:bg-white/80 light:text-gray-800 light:border-gray-400 light:hover:bg-white/90 shadow-lg"
-                        }`}
+                            }`}
                         style={{ pointerEvents: "auto" }}
                     >
                         <FileText className='w-5 h-5' />
@@ -429,12 +428,12 @@ export function ExperienceSection() {
                                                     ))}
                                                 {exp.technologies.length >
                                                     4 && (
-                                                    <span className='px-2 py-1 bg-white/10 rounded text-xs text-white/70 border border-white/20'>
-                                                        +
-                                                        {exp.technologies
-                                                            .length - 4}
-                                                    </span>
-                                                )}
+                                                        <span className='px-2 py-1 bg-white/10 rounded text-xs text-white/70 border border-white/20'>
+                                                            +
+                                                            {exp.technologies
+                                                                .length - 4}
+                                                        </span>
+                                                    )}
                                             </div>
                                         </GlassCard>
                                     </motion.div>
