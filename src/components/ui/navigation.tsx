@@ -52,6 +52,7 @@ export function Navigation() {
         <>
             {/* Desktop Navigation */}
             <motion.nav
+                initial={{ opacity: 0 }}
                 animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : -20 }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
                 style={{ pointerEvents: isVisible ? "auto" : "none" }}
