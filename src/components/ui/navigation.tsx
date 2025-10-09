@@ -81,10 +81,11 @@ export function Navigation() {
                                             }
                                             className={`
     flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-200 cursor-pointer
-    ${isActive
-                                                    ? "text-orange-600 dark:text-orange-400 font-bold dark:bg-white/20 light:bg-white/80"
-                                                    : "font-medium dark:text-white/70 light:text-gray-600"
-                                                }
+    ${
+        isActive
+            ? "text-orange-600 dark:text-orange-400 font-bold dark:bg-white/20 light:bg-white/80"
+            : "font-medium dark:text-white/70 light:text-gray-600"
+    }
     dark:hover:light:bg-white/15 hover:light:bg-white/70
     hover:text-orange-600 dark:hover:text-orange-400
   `}
@@ -94,11 +95,11 @@ export function Navigation() {
                                                 ...(isActive
                                                     ? {}
                                                     : {
-                                                        "--tw-shadow":
-                                                            "0 0 8px rgba(0,255,255,0.7)",
-                                                        "--tw-shadow-color":
-                                                            "rgba(0,255,255,0.7)",
-                                                    }),
+                                                          "--tw-shadow":
+                                                              "0 0 8px rgba(0,255,255,0.7)",
+                                                          "--tw-shadow-color":
+                                                              "rgba(0,255,255,0.7)",
+                                                      }),
                                             }}
                                             whileHover={{
                                                 textShadow: isActive
@@ -183,10 +184,11 @@ export function Navigation() {
                                     onClick={() => scrollToSection(item.href)}
                                     className={`
                     flex items-center gap-3 px-6 py-3 rounded-lg transition-all duration-200 cursor-pointer
-                    ${isActive
-                                            ? "text-orange-600 dark:text-orange-400 font-bold dark:bg-white/20 light:bg-white/80"
-                                            : "font-medium dark:text-white/70 light:text-gray-600"
-                                        }
+                    ${
+                        isActive
+                            ? "text-orange-600 dark:text-orange-400 font-bold dark:bg-white/20 light:bg-white/80"
+                            : "font-medium dark:text-white/70 light:text-gray-600"
+                    }
                     hover:text-orange-600 dark:hover:text-orange-400
                     dark:hover:light:bg-white/15 hover:light:bg-white/70
                     transition-[color,background-color]

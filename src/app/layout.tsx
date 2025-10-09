@@ -64,10 +64,15 @@ export default function RootLayout({
                         __html: `
                             (function() {
                                 try {
-                                    var theme = localStorage.getItem('theme') || 
-                                        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                                    const savedTheme = localStorage.getItem('theme');
+                                    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                                    const theme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+                                    
+                                    document.documentElement.classList.remove('dark', 'light');
                                     document.documentElement.classList.add(theme);
-                                } catch (e) {}
+                                } catch (e) {
+                                    console.error('Theme initialization error:', e);
+                                }
                             })();
                         `,
                     }}
