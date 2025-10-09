@@ -1,14 +1,23 @@
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import type { Metadata, Viewport } from "next";
+
 import "./globals.css";
 import { ThemeProvider } from "@/contexts/theme-context";
 
 const inter = Inter({
     subsets: ["latin"],
     variable: "--font-inter",
-    display: "swap",
+    display: "optional",
     preload: true,
+    adjustFontFallback: true,
 });
+
+export const viewport: Viewport = {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 5,
+    userScalable: true,
+};
 
 export const metadata: Metadata = {
     title: "Sagar Thapa Shrestha - Senior Frontend Developer",
@@ -40,7 +49,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang='en' className='scroll-smooth dark'>
+        <html lang='en' className='scroll-smooth dark' suppressHydrationWarning>
             <head>
                 <link rel='preconnect' href='https://fonts.googleapis.com' />
                 <link
@@ -50,6 +59,19 @@ export default function RootLayout({
                 />
                 <link rel='dns-prefetch' href='//fonts.googleapis.com' />
                 <link rel='dns-prefetch' href='//fonts.gstatic.com' />
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            (function() {
+                                try {
+                                    var theme = localStorage.getItem('theme') || 
+                                        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+                                    document.documentElement.classList.add(theme);
+                                } catch (e) {}
+                            })();
+                        `,
+                    }}
+                />
             </head>
             <body className={`${inter.variable} font-sans antialiased`}>
                 <ThemeProvider>{children}</ThemeProvider>

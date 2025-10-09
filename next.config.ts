@@ -1,6 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+    // Enable React Strict Mode
+    reactStrictMode: true,
+
     // Enable experimental features for better performance
     experimental: {
         optimizePackageImports: ["framer-motion", "lucide-react"],
@@ -16,6 +19,9 @@ const nextConfig: NextConfig = {
 
     // Compression
     compress: true,
+
+    // Power optimizations
+    poweredByHeader: false,
 
     // Headers for better caching
     async headers() {

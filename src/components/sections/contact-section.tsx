@@ -379,7 +379,7 @@ export function ContactSection() {
                                 Follow me
                             </h3>
                             <div className='grid grid-cols-2 gap-4'>
-                                {socialLinks.map((social, index) => {
+                                {socialLinks.map((social) => {
                                     const Icon = social.icon;
                                     return (
                                         <motion.a
