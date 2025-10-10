@@ -22,25 +22,53 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
     title: "Sagar Thapa Shrestha - Senior Frontend Developer",
     description:
-        "Senior Frontend Developer with 5+ years of experience crafting immersive digital experiences. Specializing in React, Next.js, and creating interfaces that users fall in love with.",
+        "Senior Frontend Developer with 5+ years of experience building modern, responsive web applications using React, Next.js, and TypeScript.",
     keywords: [
-        "frontend developer",
-        "react",
-        "nextjs",
-        "typescript",
-        "portfolio",
+        "SagarTS",
+        "Sagar Thapa Shrestha",
+        "Frontend Developer",
+        "Frontend Engineer",
+        "React Developer",
+        "Next.js Developer",
+        "TypeScript",
+        "Full Stack Developer",
+        "Web Developer Portfolio",
     ],
-    authors: [{ name: "Sagar Thapa Shrestha" }],
+    authors: [
+        {
+            name: "Sagar Thapa Shrestha",
+            url: "https://sagarthapashrestha.com.np",
+        },
+    ],
     openGraph: {
         title: "Sagar Thapa Shrestha - Senior Frontend Developer",
         description:
-            "Senior Frontend Developer with 5+ years of experience crafting immersive digital experiences.",
+            "Explore my portfolio — modern web experiences built with React, Next.js, and TypeScript.",
+        url: "https://sagarthapashrestha.com.np",
+        siteName: "Sagar Thapa Shrestha",
+        images: [
+            {
+                url: "https://sagarthapashrestha.com/portfolio.png",
+                width: 1200,
+                height: 630,
+                alt: "Sagar Thapa Shrestha Portfolio Preview",
+            },
+        ],
+        locale: "en_US",
         type: "website",
     },
     robots: {
         index: true,
         follow: true,
+        googleBot: {
+            index: true,
+            follow: true,
+            "max-video-preview": -1,
+            "max-image-preview": "large",
+            "max-snippet": -1,
+        },
     },
+    metadataBase: new URL("https://sagarthapashrestha.com.np"),
 };
 
 export default function RootLayout({
