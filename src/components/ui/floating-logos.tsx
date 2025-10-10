@@ -217,8 +217,8 @@ export function FloatingLogos() {
                                 width={40}
                                 height={40}
                                 className='w-7 h-7 md:w-9 md:h-9'
-                                loading='lazy'
                                 sizes='(max-width: 768px) 28px, 36px'
+                                priority
                             />
                         )}
                         {logo.name === "TypeScript" && (
@@ -228,8 +228,8 @@ export function FloatingLogos() {
                                 width={30}
                                 height={30}
                                 className='w-6 h-6 md:w-8 md:h-8'
-                                loading='lazy'
                                 sizes='(max-width: 768px) 24px, 32px'
+                                priority
                             />
                         )}
                         {logo.name === "React" && (

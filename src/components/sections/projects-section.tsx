@@ -7,7 +7,7 @@ import { ExternalLink, Play, X } from "lucide-react";
 
 import { GlassCard } from "@/components/ui/glass-card";
 
-const projects = [
+const PROJECTS = [
     {
         id: 1,
         title: "公式 ４℃ Members Club",
@@ -90,13 +90,13 @@ const projects = [
 
 export function ProjectsSection() {
     const [selectedProject, setSelectedProject] = useState<
-        (typeof projects)[0] | null
+        (typeof PROJECTS)[0] | null
     >(null);
     const ref = useRef(null);
     const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-    const featuredProjects = projects.filter((project) => project.featured);
-    const otherProjects = projects.filter((project) => !project.featured);
+    const featuredProjects = PROJECTS.filter((project) => project.featured);
+    const otherProjects = PROJECTS.filter((project) => !project.featured);
 
     return (
         <section
@@ -143,8 +143,8 @@ export function ProjectsSection() {
                                             <Image
                                                 src={project.image}
                                                 alt={project.title}
-                                                width={600}
-                                                height={400}
+                                                width={500}
+                                                height={300}
                                                 className='w-full h-full object-cover'
                                                 priority={index < 2}
                                                 loading={
