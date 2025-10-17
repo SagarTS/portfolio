@@ -22,6 +22,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     const [theme, setTheme] = useState<Theme>("dark");
     const [mounted, setMounted] = useState(false);
 
+    // const lightSound =
+    //     typeof Audio !== "undefined" ? new Audio("/sounds/light-on.wav") : null;
+    const darkSound =
+        typeof Audio !== "undefined"
+            ? new Audio("/sounds/light-off.wav")
+            : null;
+
     useEffect(() => {
         setMounted(true);
 
@@ -61,7 +68,20 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     }, [theme, mounted]);
 
     const toggleTheme = () => {
-        setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+        setTheme((prev) => {
+            const next = prev === "dark" ? "light" : "dark";
+
+            if (next === "dark" && darkSound) {
+                darkSound.currentTime = 0;
+                darkSound.play().catch(() => {});
+            } else if (next === "light" && darkSound) {
+                // update different sound if found
+                darkSound.currentTime = 0;
+                darkSound.play().catch(() => {});
+            }
+
+            return next;
+        });
     };
 
     const isDark = theme === "dark";
