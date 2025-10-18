@@ -28,78 +28,68 @@ const techLogos: FloatingLogo[] = [
         name: "TypeScript",
         color: "#3178C6",
         position: { x: 88, y: 15 },
-        animation: { duration: 5, delay: 0.5, type: "drift" },
+        animation: { duration: 5, delay: 0.2, type: "drift" },
         size: "lg",
     },
     {
         name: "Git",
         color: "#3178C6",
         position: { x: 88, y: 55 },
-        animation: { duration: 5, delay: 0.5, type: "drift" },
+        animation: { duration: 5, delay: 0.2, type: "drift" },
         size: "md",
     },
     {
         name: "React",
         color: "#61DAFB",
         position: { x: 12, y: 60 },
-        animation: { duration: 3.5, delay: 1, type: "rotate" },
+        animation: { duration: 3.5, delay: 0.5, type: "rotate" },
         size: "lg",
     },
     {
         name: "TailwindCSS",
         color: "#06B6D4",
         position: { x: 85, y: 70 },
-        animation: { duration: 4.5, delay: 1.5, type: "float" },
+        animation: { duration: 4.5, delay: 0.8, type: "float" },
         size: "md",
     },
     {
         name: "Next.js",
         color: "#000000",
         position: { x: 6, y: 40 },
-        animation: { duration: 6, delay: 2, type: "drift" },
+        animation: { duration: 6, delay: 1, type: "drift" },
         size: "sm",
     },
     {
         name: "Node.js",
         color: "#339933",
         position: { x: 92, y: 35 },
-        animation: { duration: 4, delay: 2.5, type: "rotate" },
+        animation: { duration: 4, delay: 1.2, type: "rotate" },
         size: "md",
     },
     {
         name: "Ionic",
         color: "#3880FF",
         position: { x: 10, y: 80 },
-        animation: { duration: 5.5, delay: 3, type: "float" },
+        animation: { duration: 5.5, delay: 1.4, type: "float" },
         size: "sm",
     },
 ];
 
-export function FloatingLogos() {
+export default function FloatingLogos() {
     const [mounted, setMounted] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
 
     useEffect(() => {
-        setMounted(true);
+        const updateIsMobile = () =>
+            setIsMobile(window.matchMedia("(max-width: 768px)").matches);
+        updateIsMobile();
+        window.addEventListener("resize", updateIsMobile);
+        return () => window.removeEventListener("resize", updateIsMobile);
+    }, []);
 
-        const checkMobile = () => {
-            setIsMobile(window.innerWidth < 768);
-        };
-
-        checkMobile();
-
-        let timeoutId: NodeJS.Timeout;
-        const debouncedResize = () => {
-            clearTimeout(timeoutId);
-            timeoutId = setTimeout(checkMobile, 100);
-        };
-
-        window.addEventListener("resize", debouncedResize);
-
-        return () => {
-            window.removeEventListener("resize", debouncedResize);
-            clearTimeout(timeoutId);
-        };
+    useEffect(() => {
+        const timer = setTimeout(() => setMounted(true), 500);
+        return () => clearTimeout(timer);
     }, []);
 
     if (!mounted) return null;
@@ -140,7 +130,8 @@ export function FloatingLogos() {
                                           delay: logo.animation.delay,
                                       },
                                       y: {
-                                          duration: logo.animation.duration,
+                                          duration:
+                                              logo.animation.duration * 1.5,
                                           repeat: Infinity,
                                           ease: "easeInOut",
                                       },
@@ -161,7 +152,8 @@ export function FloatingLogos() {
                                             delay: logo.animation.delay,
                                         },
                                         rotate: {
-                                            duration: logo.animation.duration,
+                                            duration:
+                                                logo.animation.duration * 1.5,
                                             repeat: Infinity,
                                             ease: "linear",
                                         },
@@ -182,12 +174,14 @@ export function FloatingLogos() {
                                             delay: logo.animation.delay,
                                         },
                                         x: {
-                                            duration: logo.animation.duration,
+                                            duration:
+                                                logo.animation.duration * 1.5,
                                             repeat: Infinity,
                                             ease: "easeInOut",
                                         },
                                         y: {
-                                            duration: logo.animation.duration,
+                                            duration:
+                                                logo.animation.duration * 1.5,
                                             repeat: Infinity,
                                             ease: "easeInOut",
                                         },
@@ -239,8 +233,8 @@ export function FloatingLogos() {
                                 width={45}
                                 height={45}
                                 className='w-8 h-8 md:w-10 md:h-10'
-                                loading='lazy'
                                 sizes='(max-width: 768px) 32px, 40px'
+                                loading='lazy'
                             />
                         )}
                         {logo.name === "TailwindCSS" && (
@@ -249,8 +243,8 @@ export function FloatingLogos() {
                                 alt='Tailwind'
                                 width={35}
                                 height={35}
-                                loading='lazy'
                                 sizes='35px'
+                                loading='lazy'
                             />
                         )}
                         {logo.name === "Next.js" && (
@@ -259,8 +253,8 @@ export function FloatingLogos() {
                                 alt='Next'
                                 width={30}
                                 height={30}
-                                loading='lazy'
                                 sizes='30px'
+                                loading='lazy'
                             />
                         )}
                         {logo.name === "Node.js" && (
@@ -269,8 +263,8 @@ export function FloatingLogos() {
                                 alt='Node'
                                 width={30}
                                 height={30}
-                                loading='lazy'
                                 sizes='30px'
+                                loading='lazy'
                             />
                         )}
                         {logo.name === "Ionic" && (
@@ -279,8 +273,8 @@ export function FloatingLogos() {
                                 alt='Ionic'
                                 width={30}
                                 height={30}
-                                loading='lazy'
                                 sizes='30px'
+                                loading='lazy'
                             />
                         )}
                         {logo.name === "Git" && (
@@ -290,8 +284,8 @@ export function FloatingLogos() {
                                 width={40}
                                 height={40}
                                 className='w-7 h-7 md:w-9 md:h-9'
-                                loading='lazy'
                                 sizes='(max-width: 768px) 28px, 36px'
+                                loading='lazy'
                             />
                         )}
                     </div>

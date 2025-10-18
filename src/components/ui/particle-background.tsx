@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
 interface Particle {
@@ -13,8 +12,9 @@ interface Particle {
     opacity: number;
 }
 
-export function ParticleBackground() {
+export default function ParticleBackground() {
     const [particles, setParticles] = useState<Particle[]>([]);
+    const [startParticles, setStartParticles] = useState(false);
     const [isReducedMotion, setIsReducedMotion] = useState(false);
 
     useEffect(() => {
@@ -33,57 +33,50 @@ export function ParticleBackground() {
     useEffect(() => {
         if (isReducedMotion) return;
 
-        const createParticles = () => {
-            const newParticles: Particle[] = [];
-            const particleCount = window.innerWidth < 768 ? 15 : 25;
-            for (let i = 0; i < particleCount; i++) {
-                newParticles.push({
-                    id: i,
-                    x: Math.random() * window.innerWidth,
-                    y: Math.random() * window.innerHeight,
-                    size: Math.random() * 2 + 1,
-                    speedX: (Math.random() - 0.5) * 0.3,
-                    speedY: (Math.random() - 0.5) * 0.3,
-                    opacity: Math.random() * 0.3 + 0.1,
-                });
-            }
-            setParticles(newParticles);
-        };
+        const particleCount = window.innerWidth < 768 ? 15 : 25;
+        const newParticles: Particle[] = Array.from(
+            { length: particleCount },
+            (_, i) => ({
+                id: i,
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+                size: Math.random() * 2 + 1,
+                speedX: (Math.random() - 0.5) * 0.3,
+                speedY: (Math.random() - 0.5) * 0.3,
+                opacity: Math.random() * 0.3 + 0.1,
+            })
+        );
+        setParticles(newParticles);
 
-        createParticles();
-
-        const animateParticles = () => {
+        let frameId: number;
+        const animate = () => {
             setParticles((prev) =>
-                prev.map((particle) => {
-                    let newX = particle.x + particle.speedX;
-                    let newY = particle.y + particle.speedY;
-
-                    if (newX > window.innerWidth) newX = 0;
-                    if (newX < 0) newX = window.innerWidth;
-                    if (newY > window.innerHeight) newY = 0;
-                    if (newY < 0) newY = window.innerHeight;
-
-                    return {
-                        ...particle,
-                        x: newX,
-                        y: newY,
-                    };
-                })
+                prev.map((p) => ({
+                    ...p,
+                    x: (p.x + p.speedX + window.innerWidth) % window.innerWidth,
+                    y:
+                        (p.y + p.speedY + window.innerHeight) %
+                        window.innerHeight,
+                }))
             );
+            frameId = requestAnimationFrame(animate);
         };
 
-        const interval = setInterval(animateParticles, 100);
-        return () => clearInterval(interval);
+        frameId = requestAnimationFrame(animate);
+        return () => cancelAnimationFrame(frameId);
     }, [isReducedMotion]);
 
-    if (isReducedMotion) {
-        return null;
-    }
+    useEffect(() => {
+        const timer = setTimeout(() => setStartParticles(true), 1000);
+        return () => clearTimeout(timer);
+    }, []);
+
+    if (!startParticles || isReducedMotion) return null;
 
     return (
         <div className='fixed inset-0 overflow-hidden pointer-events-none'>
             {particles.map((particle) => (
-                <motion.div
+                <div
                     key={particle.id}
                     className='absolute rounded-full light:bg-white/20'
                     style={{
@@ -92,19 +85,6 @@ export function ParticleBackground() {
                         width: particle.size,
                         height: particle.size,
                         opacity: particle.opacity,
-                    }}
-                    animate={{
-                        scale: [1, 1.1, 1],
-                        opacity: [
-                            particle.opacity,
-                            particle.opacity * 0.7,
-                            particle.opacity,
-                        ],
-                    }}
-                    transition={{
-                        duration: 4,
-                        repeat: Infinity,
-                        ease: "easeInOut",
                     }}
                 />
             ))}
